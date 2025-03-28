@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+from datetime import datetime
 from pprint import pprint
 from utilities import *
 from globals import *
@@ -17,7 +18,7 @@ get_matches(region, puuid, count)
 get_archetype_items(archetype)
 '''
 
-def api_request(url, max_retries=10, retry_delay=5):
+def api_request(url, max_retries=10, retry_delay=10):
     """
     Makes an API request with retry logic for 403 errors.
 
@@ -36,8 +37,8 @@ def api_request(url, max_retries=10, retry_delay=5):
 
         if response.status_code == 200:
             return response.json()
-        elif response.status_code == 403:
-            print(f"403 Forbidden - Retrying in {retry_delay} seconds...")
+        elif response.status_code == 429:
+            print(f"429 Forbidden - Retrying in {retry_delay} seconds...")
             time.sleep(retry_delay)
             retries += 1
         else:
@@ -120,13 +121,8 @@ def get_master_players(region = 'na1'):
     "veteran" - boolean
     "freshBlood" - boolean
     '''
-    call = (
-        "https://"
-        + region
-        + ".api.riotgames.com"
-        + "/lol/league/v4/masterleagues/by-queue/RANKED_SOLO_5x5?api_key="
-        + api_key
-    )
+    call = f"https://{region}.api.riotgames.com/lol/league/v4/masterleagues/by-queue/RANKED_SOLO_5x5?api_key={api_key}"
+
     
     data = api_request(call)
     if data and 'entries' in data:
@@ -148,17 +144,7 @@ def get_matches(region = str, puuid = str, count = int):
     ** REGION OPTIONS **
     "AMERICAS", "ASIA", "EUROPE", "SEA"
     '''
-    call = (
-        "https://"
-        + region
-        + ".api.riotgames.com"
-        + "/lol/match/v5/matches/by-puuid/"
-        + puuid
-        + "/ids?type=ranked&start=0&count="
-        + str(count)
-        + "&api_key="
-        + api_key
-    )
+    call = f"https://{region}.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?type=ranked&start=0&count={count}&api_key={api_key}"
 
     data = api_request(call)
     return [] if not data else data
@@ -213,9 +199,197 @@ def get_archetype_items(archetype = 'All'):
         case _:
             return 'Boy what the hell boy'
         
-# 
+def get_summoner(region, puuid):
+    '''
+    Returns summoner from puuid
+    ** ELEMENTS ** 
+    id - Encrypted summoner ID. Max length 63 characters.
+    accountId - Encrypted account ID. Max length 56 characters.
+    puuid - Encrypted PUUID. Exact length of 78 characters.
+    profileIconId - ID of the summoner icon associated with the summoner.
+    revisionDate - Date summoner was last modified specified as epoch milliseconds.
+    summonerLevel - Summoner level associated with the summoner.
+    '''
+
+    call = (
+    "https://" + 
+   region + 
+    ".api.riotgames.com/lol/summoner/v4/summoners/by-puuid/" + 
+    puuid + 
+    "?api_key=" + 
+    api_key
+    )
+
+    data = api_request(call)
+    return {} if not data else data
+
+def get_account(neoregion, puuid):
+    call = (
+        "https://" + 
+        neoregion + 
+        ".api.riotgames.com/riot/account/v1/accounts/by-puuid/" + 
+        puuid + 
+        "?api_key=" + 
+        api_key
+    )
+
+    data = api_request(call)
+    return 'Nothing found' if not data else (data['gameName'] + '#' + data['tagLine'])
 
 
-playerdata = get_challenger_players()
-chall_puuids = get_puuids(playerdata)
-pprint(chall_puuids)
+def seconds_to_date(epoch_seconds, fmt="%Y-%m-%d %H:%M:%S"):
+    """
+    Converts seconds from epoch time to a formatted date string.
+
+    Parameters:
+        epoch_seconds (int): The number of seconds since Unix epoch (1970-01-01 00:00:00 UTC).
+        fmt (str): The desired format for the output date (default: "%Y-%m-%d %H:%M:%S").
+
+    Returns:
+        str: The formatted date string.
+    """
+    return datetime.fromtimestamp(epoch_seconds / 1000).strftime(fmt)
+
+def get_match_data(neoregion, matchId):
+    call = f'https://{neoregion}.api.riotgames.com/lol/match/v5/matches/{matchId}?api_key={api_key}'
+    match_data = api_request(call)
+    return {} if not match_data else match_data
+    
+def make_weirdo_dict():
+    weirdo_dict = {}
+    
+    return weirdo_dict
+
+
+'''
+Want to take a list of challenger/grandmaster matches, and then we find a game where someone builds something weird.
+# count weird items that are not in category
+# if > 1, then we check account
+# grab 100 games from that account, scan them for that character in particular.
+# for now, just return the amount of games and the winrates.
+'''
+  
+with open("archetype_items.json", "r") as file:
+    archetype_items = json.load(file)
+
+with open("champ_classes.json", "r") as file:
+    classes = json.load(file)
+
+with open("champ_items.json", "r") as file:
+    champ_items = json.load(file)
+
+with open("champ_positions.json", "r") as file:
+    positions = json.load(file)
+
+with open("item_to_id.json", "r") as file:
+    item_to_id = json.load(file)
+
+def check_for_anomalies(region = 'AMERICAS', matchId = str):
+    '''
+    scan each player.
+        get champ, items built, role played, classes.
+    '''
+    weirdplayers = []
+
+    match_data = get_match_data(region, matchId)
+
+    if not match_data:
+        print("Match data not found.")
+        return weirdplayers
+    
+    players = match_data['info']['participants']
+
+    for player in players:
+
+        champ = player['championName']
+        position = player['teamPosition']
+        
+        supportFlag = False
+        if position == "UTILITY":
+            supportFlag = True
+
+        summonerId = player['riotIdGameName']
+        summonerTagLine = player['riotIdTagline']
+        playerId = summonerId + '#' + summonerTagLine
+        
+        if position not in positions[champ]:
+                weirdo = {'player': playerId, 'champion': champ, 'position': position}
+                weirdplayers.append(weirdo)
+                continue
+        
+        offmetaitemcount = 0
+        items = []
+        
+        for i in range(6):
+            items.append(player['item' + str(i)])
+        
+        tags = classes[champ]
+        print(playerId)
+
+        weirditems = []
+        for itemid in items:
+            iflag = False
+            if itemid == 0:
+                continue
+
+
+            if supportFlag:
+                if item in archetype_items['SupportStarter']:
+                    iflag = True
+            item = item_to_id[str(itemid)]
+
+            if item in archetype_items['Miscellaneous']:
+                iflag = True
+            
+            for tag in tags:
+                allowed_class_items = archetype_items[tag]
+                
+                if item in allowed_class_items:
+                    iflag = True
+
+            if item in champ_items[champ]:
+                iflag = True
+
+            if iflag == True:
+                continue
+
+            else: # this is a weird item
+                print()
+                print("FOUND WEIRD ITEM")
+                print(item)
+                print()
+                weirditems.append(item)
+                offmetaitemcount += 1
+        
+        if offmetaitemcount > 1:
+            print("OFF META DETECTED")
+            # make dict to append
+            weirdo = {'player': playerId, 'champ': champ, 'position': position, 'items': weirditems}
+            weirdplayers.append(weirdo)
+        else:
+            print("Normal player.")
+        
+        print()
+        print()
+        print()
+        
+    return weirdplayers
+
+
+def find_meta_breakers(region = 'AMERICAS'):
+    playerlist = get_puuids(get_master_players())
+    lastten = playerlist[len(playerlist) - 10:]
+
+    playersfound = []
+    for player in lastten:
+        
+        matches = get_matches(region, player, 5)
+        for match in matches:
+            anomalies = check_for_anomalies(region, match)
+            playersfound.extend(anomalies)
+    
+    with open("mostrecent.json", "w") as file:
+        file.write(json.dumps(playersfound, indent = 4))
+
+
+    return playersfound

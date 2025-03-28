@@ -211,6 +211,7 @@
         "Blackfire Torch",
         "Fated Ashes",
         "Archangel's Staff",
+        "Seraph's Embrace",
         "Mejai's Soulstealer",
         "Sheen",
         "Kindlegem",
@@ -392,5 +393,26 @@
         "Bloodsong",
         "Dream Maker",
         "Zaz'Zak's Realmspike"
+      ],
+
+      "Miscellaneous": [
+        "Boots",
+        "Berserker's Greaves",
+        "Boots of Swiftness",
+        "Symbiotic Soles",
+        "Synchronized Souls",
+        "Sorcerer's Shoes",
+        "Plated Steelcaps",
+        "Mercury's Treads",
+        "Ionian Boots of Lucidity",
+        "Swiftmarch",
+        "Crimson Lucidity",
+        "Chainlaced Crushers",
+        "Armored Advance",
+        "Spellslinger's Shoes",
+        "Forever Forward",
+        "Ghostcrawlers",
+        "Control Ward",
+        "Refillable Potion"
       ]
 }

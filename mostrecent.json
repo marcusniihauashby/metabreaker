@@ -1,0 +1,447 @@
+[
+    {
+        "player": "Rage Quit LoL QQ#NA1",
+        "champion": "Kayle",
+        "position": "MIDDLE"
+    },
+    {
+        "player": "Bapcoon#NA1",
+        "champ": "Warwick",
+        "position": "TOP",
+        "items": [
+            "Blade of The Ruined King",
+            "Thornmail"
+        ]
+    },
+    {
+        "player": "\u5c0f \u53ee#0619",
+        "champion": "Sylas",
+        "position": "JUNGLE"
+    },
+    {
+        "player": "alvinchangrocks#NA1",
+        "champion": "Elise",
+        "position": "UTILITY"
+    },
+    {
+        "player": "\u4e5d\u5c40\u4e0b\u534a#M1ng",
+        "champion": "Renekton",
+        "position": "MIDDLE"
+    },
+    {
+        "player": "Seal#7415",
+        "champion": "Irelia",
+        "position": "BOTTOM"
+    },
+    {
+        "player": "\u4e5d\u5c40\u4e0b\u534a#M1ng",
+        "champion": "Nocturne",
+        "position": "MIDDLE"
+    },
+    {
+        "player": "Jewish Doctor#ItWas",
+        "champion": "Yasuo",
+        "position": "BOTTOM"
+    },
+    {
+        "player": "Quatreas#NA1",
+        "champion": "Zac",
+        "position": "TOP"
+    },
+    {
+        "player": "Black#00FF0",
+        "champion": "Sylas",
+        "position": "UTILITY"
+    },
+    {
+        "player": "Lost D3sire#NA3",
+        "champ": "Zed",
+        "position": "MIDDLE",
+        "items": [
+            "Black Cleaver",
+            "Eclipse"
+        ]
+    },
+    {
+        "player": "Forthedogs#ELON",
+        "champion": "Malphite",
+        "position": "MIDDLE"
+    },
+    {
+        "player": "Rohanski#LUNA",
+        "champion": "Irelia",
+        "position": "BOTTOM"
+    },
+    {
+        "player": "dainright#b n",
+        "champion": "Garen",
+        "position": "MIDDLE"
+    },
+    {
+        "player": "Ky1111#NA1",
+        "champion": "JarvanIV",
+        "position": "TOP"
+    },
+    {
+        "player": "shaygrx#NA1",
+        "champion": "Zac",
+        "position": "MIDDLE"
+    },
+    {
+        "player": "Uli#Home",
+        "champ": "Zed",
+        "position": "MIDDLE",
+        "items": [
+            "Eclipse",
+            "Black Cleaver",
+            "Slightly Magical Footwear"
+        ]
+    },
+    {
+        "player": "Carpe Diem#0728",
+        "champion": "Rumble",
+        "position": "JUNGLE"
+    },
+    {
+        "player": "\u65b0\u592a\u967d\u4e4b\u66f8#\u585e\u5f17\u91cc\u5b89",
+        "champion": "Gwen",
+        "position": "JUNGLE"
+    },
+    {
+        "player": "fyvonlvid#NA1",
+        "champion": "Sylas",
+        "position": "TOP"
+    },
+    {
+        "player": "Maniac#1v9",
+        "champion": "Urgot",
+        "position": "JUNGLE"
+    },
+    {
+        "player": "Dojyaaa\u3072n#Of U",
+        "champion": "Sylas",
+        "position": "UTILITY"
+    },
+    {
+        "player": "Theatrics#NA11",
+        "champ": "Graves",
+        "position": "JUNGLE",
+        "items": [
+            "Black Cleaver",
+            "Ravenous Hydra",
+            "Hearthbound Axe"
+        ]
+    },
+    {
+        "player": "\u0639\u0644\u064a#ADC",
+        "champion": "Viego",
+        "position": "BOTTOM"
+    },
+    {
+        "player": "Pooooooooooy#NA1",
+        "champ": "Kalista",
+        "position": "BOTTOM",
+        "items": [
+            "Gunmetal Greaves",
+            "Blade of The Ruined King",
+            "Giant's Belt"
+        ]
+    },
+    {
+        "player": "pinkie pie#\u03b5\u03ca\u0437",
+        "champion": "Gwen",
+        "position": "JUNGLE"
+    },
+    {
+        "player": "Kassamir#NA1",
+        "champion": "Kayle",
+        "position": "MIDDLE"
+    },
+    {
+        "player": "ThatsSirVeigar#NA1",
+        "champ": "Poppy",
+        "position": "UTILITY",
+        "items": [
+            "Solstice Sleigh",
+            "Caulfield's Warhammer"
+        ]
+    },
+    {
+        "player": "NoobSleepEarly#NA1",
+        "champion": "Gwen",
+        "position": "JUNGLE"
+    },
+    {
+        "player": "Kassamir#NA1",
+        "champion": "Kayle",
+        "position": "MIDDLE"
+    },
+    {
+        "player": "Bort#Freak",
+        "champ": "Zed",
+        "position": "MIDDLE",
+        "items": [
+            "Steel Sigil",
+            "Eclipse"
+        ]
+    },
+    {
+        "player": "Yoshiji#oof",
+        "champion": "Veigar",
+        "position": "BOTTOM"
+    },
+    {
+        "player": "River Horse#NA1",
+        "champion": "Olaf",
+        "position": "BOTTOM"
+    },
+    {
+        "player": "Rocks n Socks#Rox",
+        "champion": "Taliyah",
+        "position": "UTILITY"
+    },
+    {
+        "player": "Origin#222",
+        "champ": "Kindred",
+        "position": "JUNGLE",
+        "items": [
+            "Black Cleaver",
+            "Steel Sigil"
+        ]
+    },
+    {
+        "player": "TheGoldenBlade#NA69",
+        "champion": "Azir",
+        "position": "BOTTOM"
+    },
+    {
+        "player": "yoy55t#NA1",
+        "champ": "Yone",
+        "position": "MIDDLE",
+        "items": [
+            "Blade of The Ruined King",
+            "Gunmetal Greaves"
+        ]
+    },
+    {
+        "player": "Shaco#sadsa",
+        "champ": "Shaco",
+        "position": "JUNGLE",
+        "items": [
+            "Phage",
+            "Eclipse"
+        ]
+    },
+    {
+        "player": "Geobukseon#NA1",
+        "champion": "Zac",
+        "position": "TOP"
+    },
+    {
+        "player": "Persona#809",
+        "champion": "Orianna",
+        "position": "BOTTOM"
+    },
+    {
+        "player": "SeedChanV2#Main",
+        "champ": "Poppy",
+        "position": "TOP",
+        "items": [
+            "Sundered Sky",
+            "Long Sword",
+            "Long Sword",
+            "Long Sword"
+        ]
+    },
+    {
+        "player": "W Is My Friend#NA1",
+        "champ": "Zed",
+        "position": "JUNGLE",
+        "items": [
+            "Eclipse",
+            "Phage"
+        ]
+    },
+    {
+        "player": "walid georgey#Choco",
+        "champ": "Varus",
+        "position": "BOTTOM",
+        "items": [
+            "Youmuu's Ghostblade",
+            "Edge of Night",
+            "Serylda's Grudge",
+            "Chempunk Chainsword",
+            "Opportunity"
+        ]
+    },
+    {
+        "player": "Tekaa#NA1",
+        "champ": "Yone",
+        "position": "MIDDLE",
+        "items": [
+            "Blade of The Ruined King",
+            "Gunmetal Greaves"
+        ]
+    },
+    {
+        "player": "Gu\u9a6c#CN1",
+        "champ": "Varus",
+        "position": "BOTTOM",
+        "items": [
+            "Youmuu's Ghostblade",
+            "Edge of Night"
+        ]
+    },
+    {
+        "player": "chillfish#NA1",
+        "champion": "Veigar",
+        "position": "UTILITY"
+    },
+    {
+        "player": "\u859b\u4e4b\u8c26#uwu",
+        "champion": "Neeko",
+        "position": "JUNGLE"
+    },
+    {
+        "player": "Randy VI#loveu",
+        "champion": "Sylas",
+        "position": "TOP"
+    },
+    {
+        "player": "SeedChanV2#Main",
+        "champion": "Poppy",
+        "position": "MIDDLE"
+    },
+    {
+        "player": "Kanami#ahj",
+        "champion": "Kaisa",
+        "position": "MIDDLE"
+    },
+    {
+        "player": "million#0001",
+        "champion": "Trundle",
+        "position": "TOP"
+    },
+    {
+        "player": "Mr perfect1#NA01",
+        "champ": "Darius",
+        "position": "TOP",
+        "items": [
+            "Randuin's Omen",
+            "Winged Moonplate"
+        ]
+    },
+    {
+        "player": "Marioflames#NA1",
+        "champion": "Xerath",
+        "position": "BOTTOM"
+    },
+    {
+        "player": "OptimismGunOP#NA1",
+        "champ": "Bard",
+        "position": "UTILITY",
+        "items": [
+            "Statikk Shiv",
+            "Dead Man's Plate"
+        ]
+    },
+    {
+        "player": "million#0001",
+        "champion": "Trundle",
+        "position": "TOP"
+    },
+    {
+        "player": "Budianem#NA1",
+        "champ": "Aphelios",
+        "position": "BOTTOM",
+        "items": [
+            "Hearthbound Axe",
+            "Rectrix"
+        ]
+    },
+    {
+        "player": "OPIUM SUPPORT#NA1",
+        "champ": "Kaisa",
+        "position": "BOTTOM",
+        "items": [
+            "Rectrix",
+            "Slightly Magical Footwear"
+        ]
+    },
+    {
+        "player": "TTV KaizenIRL#TWTV",
+        "champ": "Viego",
+        "position": "JUNGLE",
+        "items": [
+            "Serrated Dirk",
+            "Slightly Magical Footwear"
+        ]
+    },
+    {
+        "player": "Livanattynne#3926",
+        "champion": "Karma",
+        "position": "MIDDLE"
+    },
+    {
+        "player": "TTV KaizenIRL#TWTV",
+        "champion": "Yasuo",
+        "position": "BOTTOM"
+    },
+    {
+        "player": "Strova#NA1",
+        "champ": "Nocturne",
+        "position": "JUNGLE",
+        "items": [
+            "Frozen Heart",
+            "Serpent's Fang"
+        ]
+    },
+    {
+        "player": "rref#NA1",
+        "champ": "MonkeyKing",
+        "position": "TOP",
+        "items": [
+            "Profane Hydra",
+            "Edge of Night"
+        ]
+    },
+    {
+        "player": "Shu#9999",
+        "champ": "Warwick",
+        "position": "JUNGLE",
+        "items": [
+            "Blade of The Ruined King",
+            "Unending Despair",
+            "Spectre's Cowl"
+        ]
+    },
+    {
+        "player": "TTV KaizenIRL#TWTV",
+        "champion": "Yasuo",
+        "position": "BOTTOM"
+    },
+    {
+        "player": "Terahalamiya#2302",
+        "champion": "Skarner",
+        "position": "TOP"
+    },
+    {
+        "player": "Flippity Floop#INTID",
+        "champion": "Morgana",
+        "position": "JUNGLE"
+    },
+    {
+        "player": "\u5e7d\u7075\u523a\u5ba2#nova",
+        "champ": "Kassadin",
+        "position": "MIDDLE",
+        "items": [
+            "Shattered Armguard",
+            "Seraph's Embrace"
+        ]
+    },
+    {
+        "player": "pooprooster#NA1",
+        "champion": "JarvanIV",
+        "position": "UTILITY"
+    }
+]
