@@ -65,6 +65,6 @@ with open("champ_positions.json", "r") as file:
     positions = json.load(file)
 
 
-value = find_meta_breakers('AMERICAS')
+findplayers = find_meta_breakers('euw1')
 
-pprint(value)
+pprint(findplayers)

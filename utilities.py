@@ -48,6 +48,23 @@ def api_request(url, max_retries=10, retry_delay=10):
     print("Max retries reached. Request failed.")
     return None
 
+def region_to_neoregion(region):
+    region_mapping = {
+        "americas": {"na1", "br1", "la1", "la2"},
+        "asia": {"kr", "jp1"},
+        "europe": {"eun1", "euw1", "me1", "tr1", "ru"},
+        "sea": {"oc1", "sg2", "tw2", "vn2"},
+    }
+    
+    region = region.lower()
+    
+    for neoregion, regions in region_mapping.items():
+        if region in regions:
+            return neoregion
+    
+    return "unknown"  # Return unknown if the region is not found
+
+
 
 def get_challenger_players(region = 'na1'):
     '''
@@ -77,6 +94,7 @@ def get_challenger_players(region = 'na1'):
         return data['entries']
     
     return []
+
 
 
 def get_grandmaster_players(region = 'na1'):
@@ -144,7 +162,8 @@ def get_matches(region = str, puuid = str, count = int):
     ** REGION OPTIONS **
     "AMERICAS", "ASIA", "EUROPE", "SEA"
     '''
-    call = f"https://{region}.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?type=ranked&start=0&count={count}&api_key={api_key}"
+    neoregion = region_to_neoregion(region)
+    call = f"https://{neoregion}.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?type=ranked&start=0&count={count}&api_key={api_key}"
 
     data = api_request(call)
     return [] if not data else data
@@ -250,15 +269,12 @@ def seconds_to_date(epoch_seconds, fmt="%Y-%m-%d %H:%M:%S"):
     """
     return datetime.fromtimestamp(epoch_seconds / 1000).strftime(fmt)
 
-def get_match_data(neoregion, matchId):
+def get_match_data(region, matchId):
+    neoregion = region_to_neoregion(region)
     call = f'https://{neoregion}.api.riotgames.com/lol/match/v5/matches/{matchId}?api_key={api_key}'
     match_data = api_request(call)
     return {} if not match_data else match_data
     
-def make_weirdo_dict():
-    weirdo_dict = {}
-    
-    return weirdo_dict
 
 
 '''
@@ -324,7 +340,7 @@ def check_for_anomalies(region = 'AMERICAS', matchId = str):
             items.append(player['item' + str(i)])
         
         tags = classes[champ]
-        print(playerId)
+        print('PLAYER ID: ', playerId, '| CHAMP: ', champ, '| ROLE: ', position)
 
         weirditems = []
         for itemid in items:
@@ -361,28 +377,25 @@ def check_for_anomalies(region = 'AMERICAS', matchId = str):
                 weirditems.append(item)
                 offmetaitemcount += 1
         
-        if offmetaitemcount > 1:
+        if offmetaitemcount >= 3:
             print("OFF META DETECTED")
             # make dict to append
             weirdo = {'player': playerId, 'champ': champ, 'position': position, 'items': weirditems}
             weirdplayers.append(weirdo)
         else:
             print("Normal player.")
+        print()
         
-        print()
-        print()
-        print()
+
         
     return weirdplayers
 
 
-def find_meta_breakers(region = 'AMERICAS'):
-    playerlist = get_puuids(get_master_players())
-    lastten = playerlist[len(playerlist) - 10:]
-
+def find_meta_breakers(region = 'na1'):
+    playerlist = get_puuids(get_challenger_players(region))
+    ten = playerlist[-10:]
     playersfound = []
-    for player in lastten:
-        
+    for player in ten:
         matches = get_matches(region, player, 5)
         for match in matches:
             anomalies = check_for_anomalies(region, match)
