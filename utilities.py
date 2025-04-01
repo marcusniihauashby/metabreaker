@@ -340,7 +340,8 @@ def check_for_anomalies(region = 'AMERICAS', matchId = str):
             items.append(player['item' + str(i)])
         
         tags = classes[champ]
-        print('PLAYER ID: ', playerId, '| CHAMP: ', champ, '| ROLE: ', position)
+        print('PLAYER ID: ', playerId)
+        print('Champ: ', champ, '| Role: ', position)
 
         weirditems = []
         for itemid in items:
