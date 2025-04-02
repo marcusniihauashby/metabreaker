@@ -4,7 +4,7 @@ from pprint import pprint
 from utilities import *
 from globals import *
 from datetime import datetime
-
+import pandas as pd
 
 # dd_champ_url = "https://ddragon.leagueoflegends.com/cdn/15.6.1/data/en_US/champion.json"
 # ddchamps = requests.get(dd_champ_url).json()['data']
@@ -64,7 +64,9 @@ with open("champ_items.json", "r") as file:
 with open("champ_positions.json", "r") as file:
     positions = json.load(file)
 
+with open("mostrecent.json", "r") as file:
+    recent = json.load(file)
 
-findplayers = find_meta_breakers('euw1')
+findplayers = find_meta_breakers()
 
 pprint(findplayers)

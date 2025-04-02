@@ -5,6 +5,7 @@ from datetime import datetime
 from pprint import pprint
 from utilities import *
 from globals import *
+import pandas as pd
 
 
 '''
@@ -393,13 +394,19 @@ def check_for_anomalies(region = 'AMERICAS', matchId = str):
 
 
 def find_meta_breakers(region = 'na1'):
+
+    '''
+    get_challenger_players
+    get_grandmaster_players
+    get_master_players
+    '''
     playerlist = get_puuids(get_challenger_players(region))
-    ten = playerlist[-10:]
+    ten = playerlist[-10:] # the last 10 challenger players
     playersfound = []
     for player in ten:
-        matches = get_matches(region, player, 5)
+        matches = get_matches(region, player, 5) # get 5 matches from each of them
         for match in matches:
-            anomalies = check_for_anomalies(region, match)
+            anomalies = check_for_anomalies(region, match) # scan the matches for the weird one-off players
             playersfound.extend(anomalies)
     
     with open("mostrecent.json", "w") as file:
