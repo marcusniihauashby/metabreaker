@@ -38,8 +38,12 @@ with open(os.path.join(json_dir, "item_to_id.json"), "r") as file:
 with open(os.path.join(json_dir, "perk_to_id.json"), "r") as file:
     perk_to_id = json.load(file)
 
+with open(os.path.join(json_dir, "other_to_id.json"), "r") as file:
+    other_to_id = json.load(file)
+
 item_to_id = {int(k): v for k, v in item_to_id.items()}
 perk_to_id = {int(k): v for k, v in perk_to_id.items()}
+other_to_id = {int(k): v for k, v in other_to_id.items()}
 
 neo_regions = ["AMERICAS", "ASIA", "EUROPE", "SEA"]
 
@@ -582,6 +586,7 @@ def parse_match_data(region, matchId, puuid):
     })
     match_DF = match_DF.replace(perk_to_id)
     match_DF = match_DF.replace(item_to_id)
+    match_DF = match_DF.replace(other_to_id)
     return match_DF
 
 '''
